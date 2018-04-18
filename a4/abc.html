@@ -1,0 +1,229 @@
+<html>
+<head>
+
+</head>
+<script>
+var fm1 = document.getElementById("form1");
+function create(){
+var fm1 = document.getElementById("form1");
+addForm(fm1,1);
+
+}
+function addForm(fm1,id)
+{
+fm1.textContent = '';
+
+var break1 = document.createElement("br"); 
+var myform = document.createElement("form");
+myform.action = "first.php";
+myform.method = "post";
+
+uname = document.createElement("input");
+uname.placeholder="Enter Username";
+uname.name = "uname";
+uname.id="one";
+pass = document.createElement("input");
+pass.placeholder="Enter PassWord";
+pass.name = "pass";
+pass.id="one";
+hidden = document.createElement("input");
+hidden.type="hidden";
+hidden.name = "hidden";
+
+submitButton = document.createElement("input");
+submitButton.type="submit";
+submitButton.id="submit";
+switch(id)
+{
+case 1:
+
+hidden.value="create";
+submitButton.value="Insert Into Database";
+myform.appendChild(document.createElement("br"));
+myform.appendChild(document.createElement("br"));
+myform.appendChild(uname);
+myform.appendChild(document.createElement("br"));
+myform.appendChild(pass);
+myform.appendChild(document.createElement("br"));
+myform.appendChild(document.createElement("br"));
+break;
+case 2:
+hidden.value="update";
+submitButton.value="Update Database";
+myform.appendChild(document.createElement("br"));
+myform.appendChild(document.createElement("br"));
+myform.appendChild(uname);
+myform.appendChild(document.createElement("br"));
+myform.appendChild(pass);
+myform.appendChild(document.createElement("br"));
+myform.appendChild(document.createElement("br"));
+myform.appendChild(document.createElement("br"));
+
+break;
+case 3:
+hidden.value="delete";
+submitButton.value="Delete From Database";
+myform.appendChild(document.createElement("br"));
+myform.appendChild(document.createElement("br"));
+myform.appendChild(uname);
+myform.appendChild(document.createElement("br"));
+myform.appendChild(document.createElement("br"));
+
+break;
+case 4:
+hidden.value="read";
+submitButton.value="Fetch All from Database";
+myform.appendChild(document.createElement("br"));
+myform.appendChild(document.createElement("br"));
+
+myform.appendChild(hidden);
+
+
+break;
+}
+myform.appendChild(hidden);
+myform.appendChild(submitButton);
+fm1.appendChild(myform);
+}
+
+function update(){
+var fm1 = document.getElementById("form1");
+addForm(fm1,2);
+}
+function delete1(){
+var fm1 = document.getElementById("form1");
+addForm(fm1,3);
+}
+function read(){
+var fm1 = document.getElementById("form1");
+addForm(fm1,4);
+}
+
+function search(a) {
+var fm1 = document.getElementById("form1");
+
+    if (a.length == 0) {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("txtHint").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "ajax1.php?q=" + a, true);
+        xmlhttp.send();
+    }
+
+}
+</script>
+<style>
+
+
+.flex-container {
+  display: flex;
+  background-color: black;
+  flex-wrap:wrap;
+}
+ .create{
+  background-color: #f44336;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+  flex-grow:1;
+  text-align:center;
+color:white;
+min-width:100px;
+}
+.update {
+  background-color: #673ab7;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+  flex-grow:1;
+  text-align:center;
+color:white;
+min-width:100px;
+}
+
+.delete{
+  background-color: #2196f3;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+  flex-grow:1;
+  text-align:center;
+min-width:100px;
+}
+
+.read{
+  background-color: #4caf50;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+  flex-grow:1;
+  text-align:center;
+min-width:100px;
+}
+.search{
+  background-color: #ffa000;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+  flex-grow:1;
+  text-align:center;
+min-width:100px;
+}
+#one{
+width:90%;
+padding:0.5%;
+margin-left:5%;
+
+}
+
+#form1{
+margin-top:5%;
+margin-left:8%;
+margin-right:8%;
+     border: 3px solid green;
+}
+
+#submit{
+
+margin-left:5%;
+width:90%;
+background-color:red;
+color:white;
+font-size:22px;
+font-family:arial;
+padding:1%;
+}
+#submit:hover{
+
+margin-left:2.5%;
+width:95%;
+background-color:green;
+color:white;
+}
+</style>
+<body>
+<div class="flex-container">
+  <div class="create" onclick="create()">Insert</div>
+  <div class="update" onclick="update()">Update</div>
+  <div class="Search" >Search
+	<form>
+	<input type="text"  onkeyup="search(this.value)">
+	</form>
+  </div>  
+  <div class="delete" onclick="delete1()">Delete</div>  
+  <div class="read" onclick="read()">Display</div>  
+
+</div>
+
+<div id="form1">
+<p> <span id="txtHint"></span></p>
+</div>
+</body>
+</html>
+

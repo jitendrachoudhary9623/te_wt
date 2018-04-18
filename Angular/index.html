@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body style="background-color:#A1BD15">
+<script>
+var app = angular.module("list",[]);
+app.controller('cntrl',function($scope){
+$scope.products=["Milk","Cheese","Curd"];
+$scope.addItem=function(){
+$scope.errorMsg="";
+if(!$scope.item){return ;}
+if(($scope.products.indexOf($scope.item))==-1)
+{
+$scope.products.push($scope.item);
+}
+else
+{
+$scope.errorMsg="Duplicate Entries";
+}
+}
+
+$scope.removeItem=function(x){
+$scope.errorMsg="";
+$scope.products.splice(x,1);
+}
+
+});
+
+</script>
+<div  ng-app="list" ng-controller="cntrl" class="container" style="">
+
+<div class="row" >
+<div class="col-md-8 ">
+
+<ul ng-repeat="c in products" class="table table-stripped table-bordered">
+
+<li>{{c}} <span ng-click="removeItem($index)" class="btn btn-danger" style="align:right"> X </span> </li>
+</ul>
+</div>
+</div>
+
+
+<div class="row">
+<div class="col-md-8 col-md-offset-2">
+<input type="text" ng-model="item" class="form-control">
+</div>
+</div>
+
+
+<div class="row">
+<div class="col-md-8 col-md-offset-2 ">
+<button ng-click="addItem()" class="btn btn-block btn-success" style="margin-top:2%">Add Item</button>
+<div class=" btn btn-block btn-danger">{{errorMsg}}</p>
+</div>
+</div>
+
+</div>
+<input type="color">
+</body>
+</html>
+

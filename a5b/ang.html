@@ -1,0 +1,84 @@
+<html>
+<script src="js/angular.js"></script>
+<script src="js/main.js"></script>
+<style>
+
+body{
+background-color:linen;
+}
+.flex-container {
+  display: flex;
+
+  flex-wrap:wrap;
+ height:100%;
+
+}
+.options{
+width:50%
+
+flex:1;
+min-width:100px;
+height:100%
+}
+.options ul{
+
+height:100%
+}
+
+.options ul li{
+border:1px solid black;
+
+
+font-weight: bold;
+padding:28%;
+display:block;
+text-align:center;
+
+}
+.htm{
+border:1px solid black;
+background-color: white;
+flex:3;
+
+}
+#holder{
+
+ background-color: #FFFFFF; border-radius: 10px; margin-top: 10px; height: 70vh;
+
+}
+.insert{
+background-color: #abc123;
+}
+.update{
+background-color:#0dce9a;
+}
+.delete{
+background-color: #4286f4;
+}
+.display{
+background-color: #f28715;
+}
+.Search{
+background-color: #e84d22;
+}
+</style>
+<body>
+<div class="flex-container">
+<div class="options">
+<ul>
+<li class="insert" onclick="insert()">Insert</li>
+<li class="update" onclick="update()">Update</li>
+<li class="delete" onclick="delete1()">Delete</li>
+<li class="display" onclick="read()">Display</li>
+
+</ul>
+</div>
+
+<div class="htm">
+ <div id="holder">
+</div>
+</div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<html>
+<head>
+<link href="css/style.css" rel="stylesheet" type="text/css"></link>
+
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"></link>
+
+<script src="js/jquery-3.3.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/bootstrapvalidator.min.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+$(function(){
+ $("#validate-form").validate({rules: { firstname: "required", lastname: "required", email: { required: true, email: true }, password: { required: true, minlength: 6 } }, { firstname: "First Name field cannot be blank!", lastname: "Last Name field cannot be blank!", password: { required: "Password field cannot be blank!", minlength: "Your password must be at least 6 characters long" }, email: "Please enter a valid email address" }, submitHandler: function(form){ form.submit(); } }
+
+$('#pa').css({'color':'red','background-color':'yellow'});
+
+
+
+});
+
+</script>
+</head>
+<body>
+<div class="container">
+<form role="form">
+<div class="form-group">
+<label for="name">Name</label>
+<div class="input-group">
+<span class="input-group-addon">Username</span>
+<input type="text" class="form-control" name="name" placeholder="Enter name" id="name">
+</div>
+<input type="button" class="btn btn-block" id="bt" value="Show" onclick="verify()"><span id="error"></span>
+</div>
+</form>
+
+<div class="panel panel-info">
+<div class="panel-heading">Heading</div>
+<div class="panel-body" id="pa">This is body <br> lets se if it works </div>
+</div>
+
+</div>
+</body>
+</html>
